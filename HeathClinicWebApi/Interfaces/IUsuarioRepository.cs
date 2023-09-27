@@ -2,5 +2,8 @@
 {
     public interface IUsuarioRepository
     {
+        
     }
 }
+
+
