@@ -16,7 +16,7 @@ namespace HeathClinicWebApi.Domains
         public class Usuario
         {
             [Key]
-            public Guid IdUsuario { get; set; } = Guid.NewGuid();
+            public Guid? IdUsuario { get; set; } = Guid.NewGuid();
 
             [Column(TypeName = "VARCHAR(100)")]
             [Required(ErrorMessage = "Nome Completo do usuário obrigatório!")]
@@ -39,10 +39,10 @@ namespace HeathClinicWebApi.Domains
 
             //ref.tabela TiposUSuario = FK
             [Required(ErrorMessage = "Informe o tipo do usuário!")]
-            public Guid IdTipoUsuario { get; set; }
+            public Guid? IdTipoUsuario { get; set; }
 
             [ForeignKey(nameof(IdTipoUsuario))]
-            public TiposUsuario? TiposUsuario { get; set; }
+            public TiposUsuario? TiposUsuario { get; set;}
         }
     }
 }

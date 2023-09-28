@@ -9,7 +9,6 @@ namespace HeathClinicWebApi.Domains
     public partial class ClinicaDomain
     {
         [Table(nameof(Clinica))]
-
         public class Clinica
         {
             [Key]
@@ -26,7 +25,7 @@ namespace HeathClinicWebApi.Domains
 
             [Column(TypeName = "VARCHAR (100)")]
             [Required (ErrorMessage = "Endereço obrigatório!")]
-            public string ? Endereco { get; set; }
+            public string? Endereco { get; set; }
 
             [Column(TypeName = "CHAR (14)")]
             [Required(ErrorMessage = "CNPJ obrigatório!")]
@@ -34,15 +33,15 @@ namespace HeathClinicWebApi.Domains
 
             [Column(TypeName = "TIME")]
             [Required(ErrorMessage = "Horario de abertura obrigatório!")]
-            public string? HorarioAbertura { get; set; }
+            public TimeOnly? HorarioAbertura { get; set; }
+            
 
             [Column(TypeName = "TIME")]
             [Required(ErrorMessage = " Horario de fechamento obrigatório!")]
-            public string? HorarioFechamento { get; set; }
+            public TimeOnly? HorarioFechamento { get; set; }
 
             [Column (TypeName = "VARCHAR (100")]
             [Required(ErrorMessage = "Descrição da clinica obrigatória!")]
-
             public string? DescricaoClinica { get; set; }
         }
     }

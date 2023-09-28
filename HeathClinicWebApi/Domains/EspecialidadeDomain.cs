@@ -6,15 +6,16 @@ namespace HeathClinicWebApi.Domains
     public partial class EspecialidadeDomain
     {
         [Table (nameof(Especialidade))]
-        public class Especialidade
+        public class Especialidade 
         {
             [Key]
-            public Guid IdEspecialidade { get; set; }
+            public Guid? IdEspecialidade { get; set; }
 
             [Column(TypeName = "VARCHAR(30)")]
-            [Required]
+            [Required(ErrorMessage = "Especialidade obrigatoria!")]
             public string? Area { get; set; }
         }
+        
     }
 }
 

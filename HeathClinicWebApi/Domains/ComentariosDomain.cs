@@ -12,10 +12,10 @@ namespace HeathClinicWebApi.Domains
         {
             [Key]
 
-            public Guid IdComentarios { get; set; } = Guid.NewGuid();
+            public Guid? IdComentarios { get; set; } = Guid.NewGuid();
 
             [Column(TypeName = "VARCHAR(100)" )]
-            public string? FeedBcak { get; set;}
+            public string? FeedBack { get; set;}
 
         }
     }
