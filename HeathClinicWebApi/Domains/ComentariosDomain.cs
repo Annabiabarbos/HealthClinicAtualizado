@@ -4,12 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HeathClinicWebApi.Domains
 {
-    public class ComentariosDomain
-    {
-        [Table(nameof(Comentarios))]
-
-        public class Comentarios
-        {
+    [Table(nameof(Comentarios))]
+    public class Comentarios
+    {        
             [Key]
 
             public Guid? IdComentarios { get; set; } = Guid.NewGuid();
@@ -17,6 +14,6 @@ namespace HeathClinicWebApi.Domains
             [Column(TypeName = "VARCHAR(100)" )]
             public string? FeedBack { get; set;}
 
-        }
+        
     }
 }

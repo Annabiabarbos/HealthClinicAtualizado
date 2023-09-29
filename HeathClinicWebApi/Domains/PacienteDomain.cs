@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using static HeathClinicWebApi.Domains.TiposUsuarioDomain;
+using static HeathClinicWebApi.Domains.TiposUsuario;
 using System.Diagnostics.Contracts;
 
 namespace HeathClinicWebApi.Domains
 {
-    public class PacienteDomain
+    [Table(nameof(Paciente))]
+    public class Paciente
     {
-        [Table(nameof(Paciente))]
-        public class Paciente
-        {
+        
             [Key]
             public Guid? IdPaciente { get; set; } = Guid.NewGuid();
 
@@ -29,7 +28,6 @@ namespace HeathClinicWebApi.Domains
             public Guid? IdUsuario { get; set; }
 
             [ForeignKey(nameof(IdUsuario))]
-            public UsuarioDomain? Usuario { get; set; }
-        }
+            public Usuario? Usuario { get; set; }
     }
 }

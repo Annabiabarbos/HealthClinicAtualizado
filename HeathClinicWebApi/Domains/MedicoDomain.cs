@@ -1,17 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using static HeathClinicWebApi.Domains.TiposUsuarioDomain;
-using static HeathClinicWebApi.Domains.ClinicaDomain;
+using static HeathClinicWebApi.Domains.TiposUsuario;
+using static HeathClinicWebApi.Domains.Clinica;
 
 namespace HeathClinicWebApi.Domains
 {
-    public class MedicoDomain
+    [Table(nameof(Medico))]
+    public class Medico
     {
-        [Table(nameof(Medico))]
 
-        public class Medico
-        {
             [Key]
 
             public Guid? IdMedico { get; set; } = Guid.NewGuid();
@@ -32,20 +30,20 @@ namespace HeathClinicWebApi.Domains
             public Guid? IdClinica { get; set; }
 
             [ForeignKey(nameof(IdClinica))]
-            public ClinicaDomain? Clinica { get; set; }
+            public Clinica? Clinica { get; set; }
 
             [Required(ErrorMessage = "Especialidade obrigatoria!")]
             public Guid? IdEspecialidade { get; set; }
 
             [ForeignKey(nameof(IdEspecialidade))]
-            public EspecialidadeDomain? Especialidade { get; set; }
+            public Especialidade? Especialidade { get; set; }
 
             [Required(ErrorMessage = "Informar o usuario!")]
             public Guid IdUsuario { get; set; }
 
             [ForeignKey(nameof(IdUsuario))]
-            public UsuarioDomain? Usuario { get; set; }
-        }
+            public Usuario? Usuario { get; set; }
+        
     }
 }
 

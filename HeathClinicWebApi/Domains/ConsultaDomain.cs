@@ -2,16 +2,14 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using HeathClinicWebApi.Domains;
-using static HeathClinicWebApi.Domains.UsuarioDomain;
+using static HeathClinicWebApi.Domains.Usuario;
 
 namespace HeathClinicWebApi.Domains
 {
-    public class ConsultaDomain
+    [Table(nameof(Consulta))]
+    public class Consulta
     {
-        [Table(nameof(Consulta))]
-
-        public class Consulta
-        {
+        
             [Key]
 
             public Guid? IdConsulta { get; set; }
@@ -21,8 +19,8 @@ namespace HeathClinicWebApi.Domains
             public string? Prontuario { get; set; }
 
             [Column(TypeName = "DATE")]
-            [Required(ErrorMessage = "Data obrigatoria!")]
-            public TimeOnly? DataConsulta { get; set; }
+            [Required(ErrorMessage = "Data da consulta obrigatoria!")]
+            public DateTime? DataConsulta { get; set; }
 
             [Column(TypeName = "VARCHAR (50)")]
             [Required(ErrorMessage = "Nome do medico obrigatorio!")]
@@ -32,13 +30,13 @@ namespace HeathClinicWebApi.Domains
             public Guid? IdPaciente { get; set; }
 
             [ForeignKey(nameof(IdPaciente))]
-            public PacienteDomain? Paciente { get; set; }
+            public Paciente? Paciente { get; set; }
 
             [Required(ErrorMessage = "Informar os comentarios!")]
             public Guid? IdComentario { get; set; }
 
             [ForeignKey(nameof(IdComentario))]
-            public ComentariosDomain? Comentarios { get; set; }
-        }
+            public Comentarios? Comentarios { get; set; }
+        
     }
 }

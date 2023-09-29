@@ -6,13 +6,12 @@ using System.Runtime.Serialization;
 
 namespace HeathClinicWebApi.Domains
 {
-    public partial class ClinicaDomain
+    [Table(nameof(Clinica))]
+    public class Clinica
     {
-        [Table(nameof(Clinica))]
-        public class Clinica
-        {
             [Key]
             public Guid IdClinica { get; set; } = Guid.NewGuid();
+           
 
             [Column(TypeName ="VARCHAR (20)")]
             [Required(ErrorMessage = "Nome Fantasia obrigatório!")]
@@ -32,18 +31,21 @@ namespace HeathClinicWebApi.Domains
             public string? CNPJ { get; set; }
 
             [Column(TypeName = "TIME")]
-            [Required(ErrorMessage = "Horario de abertura obrigatório!")]
-            public TimeOnly? HorarioAbertura { get; set; }
-            
+            [Required(ErrorMessage = "horario abertutra obrigatorio!")]
+            [DataType(DataType.Time)]
+            [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"hh\:mm:ss")]
+            public TimeSpan? HorarioAbertura { get; set; }
 
-            [Column(TypeName = "TIME")]
-            [Required(ErrorMessage = " Horario de fechamento obrigatório!")]
-            public TimeOnly? HorarioFechamento { get; set; }
 
-            [Column (TypeName = "VARCHAR (100")]
+           [Column(TypeName = "TIME")]
+           [Required(ErrorMessage = "horario fechamento obrigatorio!")]
+           [DataType(DataType.Time)]
+           [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"hh\:mm:ss")]
+            public TimeSpan? HorarioFechamento { get; set; }
+
+            [Column (TypeName = "VARCHAR (100)")]
             [Required(ErrorMessage = "Descrição da clinica obrigatória!")]
             public string? DescricaoClinica { get; set; }
-        }
     }
 }
 

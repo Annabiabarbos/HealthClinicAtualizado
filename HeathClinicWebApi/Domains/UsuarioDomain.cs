@@ -2,18 +2,15 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using static HeathClinicWebApi.Domains.TiposUsuarioDomain;
+using static HeathClinicWebApi.Domains.TiposUsuario;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace HeathClinicWebApi.Domains
 {
-    public class UsuarioDomain
-    
-        {
     [Table(nameof(Usuario))]
-        [Index(nameof(Email), IsUnique = true)]
-        public class Usuario
+    [Index(nameof(Email), IsUnique = true)]
+    public class Usuario
         {
             [Key]
             public Guid? IdUsuario { get; set; } = Guid.NewGuid();
@@ -32,18 +29,20 @@ namespace HeathClinicWebApi.Domains
             public string? Senha { get; set; }
 
 
-            [Column(TypeName ="DATETIME")]
-            [Required(ErrorMessage = "Data de nascimento obrigatória!")]
-            public string? DataNascimento { get; set; }
+            [Column(TypeName ="DATE")]
+            [DataType(DataType.Date)]
+            [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+            public DateTime? DataNascimento { get; set; }
 
 
             //ref.tabela TiposUSuario = FK
             [Required(ErrorMessage = "Informe o tipo do usuário!")]
             public Guid? IdTipoUsuario { get; set; }
 
+
             [ForeignKey(nameof(IdTipoUsuario))]
             public TiposUsuario? TiposUsuario { get; set;}
-        }
+        
     }
 }
     
