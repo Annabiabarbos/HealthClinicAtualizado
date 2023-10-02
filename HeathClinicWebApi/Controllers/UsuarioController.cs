@@ -1,7 +1,6 @@
 ﻿using HeathClinicWebApi.Domains;
 using HeathClinicWebApi.Interfaces;
 using HeathClinicWebApi.Repositories;
-using HeathClinicWebApi.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,13 +9,13 @@ namespace HeathClinicWebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class LoginController : ControllerBase
+    public class UsuarioController : ControllerBase
     {
-       private readonly IUsuarioRepository _usuarioRepository;
+        private IUsuarioRepository _usuarioRepository;
 
-       public LoginController()
+        public UsuarioController()
         {
-         _usuarioRepository = new UsuarioRepository();
+            _usuarioRepository = new UsuarioRepository();
         }
 
         [HttpPost]
@@ -29,13 +28,9 @@ namespace HeathClinicWebApi.Controllers
             }
             catch (Exception e)
             {
-
                 return BadRequest(e.Message);
             }
         }
-        
 
     }
 }
-
-

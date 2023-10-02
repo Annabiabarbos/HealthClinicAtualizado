@@ -1,11 +1,20 @@
-﻿using HeathClinicWebApi.Domains;
+﻿using HeathClinicWebApi.Context;
+using HeathClinicWebApi.Domains;
 using HeathClinicWebApi.Interfaces;
+using System.Runtime.CompilerServices;
 using System.Xml;
 
 namespace HeathClinicWebApi.Repositories
 {
     public class ComentariosRepository : IComentariosRepository
     {
+        private readonly HealthContext _healthContext;
+
+        public ComentariosRepository()
+        { 
+            _healthContext = new HealthContext();
+        }
+
         public void Atualizar(Guid id, Comentarios comentario)
         {
             throw new NotImplementedException();
@@ -13,12 +22,15 @@ namespace HeathClinicWebApi.Repositories
 
         public void Cadastrar(Comentarios comentario)
         {
-            throw new NotImplementedException();
+            _healthContext.Comentario.Add(comentario);
+            _healthContext.SaveChanges();
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+           Comentarios comentarios = _healthContext.Comentario.Find(id);
+            _healthContext.Comentario.Remove(comentarios);
+            _healthContext.SaveChanges();
         }
     }
 }

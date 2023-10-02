@@ -4,10 +4,8 @@ namespace HeathClinicWebApi.Interfaces
 {
     public interface ITiposUsuarioRepository
     {
-        Usuario BuscarUsuario(string email, string senha);
+        void Deletar(Guid id);
 
-        void Cadastrar(Usuario usuario);
-
-
+        void Cadastrar(TiposUsuario tiposUsuario);
     }
 }

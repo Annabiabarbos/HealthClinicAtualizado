@@ -1,30 +1,31 @@
 ﻿using HeathClinicWebApi.Domains;
 using HeathClinicWebApi.Interfaces;
 using HeathClinicWebApi.Repositories;
-using HeathClinicWebApi.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 
 namespace HeathClinicWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class LoginController : ControllerBase
+    public class ClinicaController : ControllerBase
     {
-       private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IClinicaRepository _clinicaRepository;
 
-       public LoginController()
+        public ClinicaController()
         {
-         _usuarioRepository = new UsuarioRepository();
+            _clinicaRepository= new ClinicaRepository();
         }
 
+
         [HttpPost]
-        public IActionResult Post(Usuario usuario)
+        public IActionResult Post (Clinica clinica)
         {
             try
             {
-                _usuarioRepository.Cadastrar(usuario);
+                _clinicaRepository.Cadastrar(clinica);
                 return StatusCode(201);
             }
             catch (Exception e)
@@ -33,9 +34,5 @@ namespace HeathClinicWebApi.Controllers
                 return BadRequest(e.Message);
             }
         }
-        
-
     }
 }
-
-
