@@ -16,7 +16,18 @@ namespace HeathClinicWebApi.Repositories
         }
         public void Atualizar(Guid id, Usuario usuario)
         {
-            throw new NotImplementedException();
+
+            Usuario usuarioBuscado = _healthContext.Usuario.Find(id);
+
+            if (usuarioBuscado != null)
+            {
+                usuarioBuscado.Email = usuario.Email;
+                usuarioBuscado.Senha = usuario.Senha;
+            }
+
+            _healthContext.Usuario.Update(usuarioBuscado);
+
+            _healthContext.SaveChanges();
         }
 
         public void Cadastrar(Usuario usuario)
@@ -30,7 +41,11 @@ namespace HeathClinicWebApi.Repositories
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Usuario usuarioBuscado = _healthContext.Usuario.Find(id);
+            _healthContext.Usuario.Remove(usuarioBuscado);
+            _healthContext.SaveChanges();
+
+
         }
     }
 

@@ -45,8 +45,4 @@ namespace HeathClinicWebApi.Domains
         
     }
 }
-    
-     
-
-
-
+   

@@ -10,6 +10,6 @@ namespace HeathClinicWebApi.Interfaces
       void Atualizar(Guid id, Clinica clinica);
 
       void Deletar(Guid id);
-        
+    
     }
 }

@@ -34,5 +34,39 @@ namespace HeathClinicWebApi.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpDelete]
+        public IActionResult Delete (Guid id)
+        {
+            try
+            {
+                _clinicaRepository.Deletar(id);
+                return Ok ();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut]
+        public IActionResult Update(Guid id, Clinica clinica)
+        {
+            try
+            {
+               
+                _clinicaRepository.Atualizar(id, clinica);
+
+                return NoContent();
+                
+               
+            }
+            catch (Exception e)
+            {
+
+               return BadRequest(e.Message);
+            }
+        }
     }
 }

@@ -17,7 +17,15 @@ namespace HeathClinicWebApi.Repositories
 
         public void Atualizar(Guid id, Comentarios comentario)
         {
-            throw new NotImplementedException();
+            Comentarios comentarioBuscado = _healthContext.Comentario.Find(id);
+            
+            if (comentarioBuscado != null)
+            {
+                comentarioBuscado.FeedBack = comentario.FeedBack;
+            }
+            _healthContext.Comentario.Update(comentarioBuscado);
+
+            _healthContext.SaveChanges();
         }
 
         public void Cadastrar(Comentarios comentario)

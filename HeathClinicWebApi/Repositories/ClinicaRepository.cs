@@ -13,22 +13,37 @@ namespace HeathClinicWebApi.Repositories
         {
             _healthContext = new HealthContext();
         }
-       
+
         public void Atualizar(Guid id, Clinica clinica)
         {
-            throw new NotImplementedException();
+            Clinica ClinicaBuscada = _healthContext.Clinica.Find(id);
+
+            if (ClinicaBuscada != null)
+            {
+                ClinicaBuscada.DescricaoClinica = clinica.DescricaoClinica;
+                ClinicaBuscada.RazaoSocial = clinica.RazaoSocial;
+                ClinicaBuscada.CNPJ = clinica.CNPJ;
+                ClinicaBuscada.Endereco = clinica.Endereco;
+            }
+
+            _healthContext.Clinica.Update(ClinicaBuscada);
+
+            _healthContext.SaveChanges();
         }
 
         public void Cadastrar(Clinica clinica)
         {
             _healthContext.Clinica.Add(clinica);
-
             _healthContext.SaveChanges();
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Clinica clinicaBuscada = _healthContext.Clinica.Find(id);
+            _healthContext.Clinica.Remove(clinicaBuscada);
+            _healthContext.SaveChanges();
+
         }
     }
 }
+

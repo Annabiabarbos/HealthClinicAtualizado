@@ -49,5 +49,21 @@ namespace HeathClinicWebApi.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPut]
+        public IActionResult Atualizar(Guid id, Comentarios comentario)
+        {
+            try
+            {
+                _comentariosRepository.Atualizar(id, comentario);
+                return NoContent ();
+               
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
