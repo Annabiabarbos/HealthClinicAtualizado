@@ -36,7 +36,7 @@ namespace HeathClinicWebApi.Repositories
 
         public void Deletar(Guid id)
         {
-           Comentarios comentarios = _healthContext.Comentario.Find(id);
+             Comentarios comentarios = _healthContext.Comentario.Find(id);
             _healthContext.Comentario.Remove(comentarios);
             _healthContext.SaveChanges();
         }

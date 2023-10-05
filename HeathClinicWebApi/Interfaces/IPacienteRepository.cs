@@ -6,8 +6,6 @@ namespace HeathClinicWebApi.Interfaces
     {
         void Cadastrar(Paciente paciente);
 
-        List<Paciente> ListarTodos();
-
         void Atualizar (Guid id , Paciente paciente);
 
         void Deletar(Guid id);

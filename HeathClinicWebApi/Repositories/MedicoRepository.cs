@@ -19,7 +19,6 @@ namespace HeathClinicWebApi.Repositories
             if (medicoBuscado !=null)
             {
                 medicoBuscado.Contato = medico.Contato;
-                medicoBuscado.Especialidade = medico.Especialidade;
                 medicoBuscado.Clinica = medico.Clinica;
             }
 
