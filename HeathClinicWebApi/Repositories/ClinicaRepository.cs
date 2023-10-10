@@ -4,6 +4,7 @@ using HeathClinicWebApi.Interfaces;
 
 namespace HeathClinicWebApi.Repositories
 {
+
     public class ClinicaRepository : IClinicaRepository
     {
         
@@ -43,6 +44,13 @@ namespace HeathClinicWebApi.Repositories
             _healthContext.Clinica.Remove(clinicaBuscada);
             _healthContext.SaveChanges();
 
+        }
+
+        public List<Clinica> Listar()
+        {
+            throw new NotImplementedException();
+
+            
         }
     }
 }

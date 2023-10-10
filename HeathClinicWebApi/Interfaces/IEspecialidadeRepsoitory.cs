@@ -7,5 +7,9 @@ namespace HeathClinicWebApi.Interfaces
         void Cadastrar(Especialidade especialidade);
 
         void Deletar(Guid id);
+
+        List<Especialidade> Listar();
+
+        
     }
 }

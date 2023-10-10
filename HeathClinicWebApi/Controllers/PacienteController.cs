@@ -50,6 +50,22 @@ namespace HeathClinicWebApi.Controllers
             }
         }
 
-        
+        [HttpPut]
+        public IActionResult Atualizar (Guid id , Paciente paciente)
+        {
+            try
+            {
+
+                _pacienteRepository.Atualizar(id, paciente);
+
+                return NoContent();
+
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

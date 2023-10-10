@@ -8,5 +8,7 @@ namespace HeathClinicWebApi.Interfaces
         void Deletar(Guid id);
 
         void Atualizar(Guid id, Comentarios comentario);
+
+        List<Comentarios> Listar();
     }
 }

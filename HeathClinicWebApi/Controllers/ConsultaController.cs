@@ -1,4 +1,5 @@
-﻿using HeathClinicWebApi.Domains;
+﻿using HeathClinicWebApi.Controllers;
+using HeathClinicWebApi.Domains;
 using HeathClinicWebApi.Interfaces;
 using HeathClinicWebApi.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -9,29 +10,30 @@ namespace HeathClinicWebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class ComentariosController : ControllerBase
+
+    public class ConsultaController : ControllerBase
     {
-        private readonly ComentariosRepository _comentariosRepository;
+        private readonly ConsultaRepository _consultaRepository;
         
-        public ComentariosController()
+
+        public ConsultaController()
         {
-            _comentariosRepository = new ComentariosRepository();
+           _consultaRepository = new ConsultaRepository();
         }
 
-
         [HttpPost]
-        public IActionResult Post(Comentarios comentarios)
+        public IActionResult Post ( Consulta consulta)
         {
             try
             {
-                _comentariosRepository.Cadastrar(comentarios);
-                return StatusCode(201); 
+                _consultaRepository.Cadastrar(consulta);
+                return StatusCode(201);
 
             }
             catch (Exception e)
             {
 
-                return BadRequest(e.Message);   
+                return BadRequest(e.Message);
             }
         }
 
@@ -40,24 +42,23 @@ namespace HeathClinicWebApi.Controllers
         {
             try
             {
-               _comentariosRepository.Deletar(id);
+                _consultaRepository.Deletar(id);
                 return Ok();
             }
-            catch (Exception e )
+            catch (Exception e)
             {
 
-                return BadRequest(e.Message);
+                return BadRequest (e.Message);
             }
         }
 
         [HttpPut]
-        public IActionResult Atualizar(Guid id, Comentarios comentario)
+        public IActionResult Update (Guid id , Consulta consulta)
         {
             try
             {
-                _comentariosRepository.Atualizar(id, comentario);
-                return NoContent ();
-               
+                _consultaRepository.Atualizar(id, consulta);
+                return NoContent();
             }
             catch (Exception e)
             {
@@ -65,7 +66,5 @@ namespace HeathClinicWebApi.Controllers
                 return BadRequest(e.Message);
             }
         }
-
-        
     }
 }
